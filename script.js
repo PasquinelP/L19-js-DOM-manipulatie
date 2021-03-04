@@ -34,7 +34,8 @@ Todo list:
 // Deel 1
 
 const bigFiveButtons = document.querySelectorAll(".big-five-button");
-const list = document.querySelector("ul#spotted-animals-list");
+const listAnimalsSpotted = document.querySelector("ul#spotted-animals-list");
+const removeFirstItemButton = document.querySelector("#remove-first-item-button");
 
 const buttonClicked = (value) => {
   const spottedAnimal = value;
@@ -42,7 +43,7 @@ const buttonClicked = (value) => {
   const listItem = document.createElement("li");
   listItem.classList.add("spotted-animals-list-item");
   listItem.innerHTML = spottedAnimal;
-  list.appendChild(listItem);
+  listAnimalsSpotted.appendChild(listItem);
 }
 
 bigFiveButtons.forEach((bigFiveButton) => {
@@ -54,4 +55,13 @@ bigFiveButtons.forEach((bigFiveButton) => {
 
 // Deel 2
 
+const removeFirstItem = () => {
+  const removeChild = document.querySelector("ul#spotted-animals-list li");
+  console.log(removeChild);
+  listAnimalsSpotted.removeChild(removeChild);
+}
+
+removeFirstItemButton.addEventListener("click", removeFirstItem);
+
+// Deel 3
 
