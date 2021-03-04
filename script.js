@@ -29,13 +29,29 @@ Todo list:
     selecteer ook de parent
     gebruik parent.removeChild(child).
     Alternatief: Verwijder het element met ChildNode.remove() 
-    */
+*/
+
+/*
+Deel 3 - Meerdere element verwijderen uit de DOM
+
+Opdracht: Wanneer ik als gebruiker op de "remove all spotted animals" knop klik worden alle dieren die ik heb gespot verwijderd.
+
+Todo list:
+
+    Maak een eventlistener vast aan de button
+    Maak een functie vast aan de eventlistener
+    In de functie: selecteer de parent
+    Verwijder alle kinderen van de parent 
+     De simpele manier: set de innerHTML van de parent naar een empty string 
+     De chique manier: selecteer de parent en gebruik een loop om elk element 1 voor 1 te verwijderen met .remove() of met .removeChild()
+*/
 
 // Deel 1
 
 const bigFiveButtons = document.querySelectorAll(".big-five-button");
 const listAnimalsSpotted = document.querySelector("ul#spotted-animals-list");
 const removeFirstItemButton = document.querySelector("#remove-first-item-button");
+const removeAllButton = document.querySelector("#remove-all-button");
 
 const buttonClicked = (value) => {
   const spottedAnimal = value;
@@ -44,7 +60,7 @@ const buttonClicked = (value) => {
   listItem.classList.add("spotted-animals-list-item");
   listItem.innerHTML = spottedAnimal;
   listAnimalsSpotted.appendChild(listItem);
-}
+};
 
 bigFiveButtons.forEach((bigFiveButton) => {
   bigFiveButton.addEventListener("click", () => {
@@ -59,9 +75,19 @@ const removeFirstItem = () => {
   const removeChild = document.querySelector("ul#spotted-animals-list li");
   console.log(removeChild);
   listAnimalsSpotted.removeChild(removeChild);
-}
+};
 
 removeFirstItemButton.addEventListener("click", removeFirstItem);
 
 // Deel 3
+
+const removeAllItems = () => {
+  const spottedAnimalsListItems = document.querySelectorAll(".spotted-animals-list-item"
+);
+  spottedAnimalsListItems.forEach((spottedAnimalsListItem) => {
+    spottedAnimalsListItem.remove();
+  });
+};
+
+removeAllButton.addEventListener("click", removeAllItems);
 
